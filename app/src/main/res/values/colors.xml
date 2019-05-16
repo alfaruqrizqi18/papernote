@@ -6,4 +6,5 @@
     <color name="rippleColor">#FFEE58</color>
 
     <color name="white">#FAFAFA</color>
+    <color name="gray900">#212121</color>
 </resources>

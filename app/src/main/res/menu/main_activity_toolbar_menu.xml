@@ -5,12 +5,12 @@
         android:id="@+id/miCompose"
         android:icon="@drawable/toolbar_icon_search"
         app:showAsAction="ifRoom"
-        android:title="Compose">
+        android:title="">
     </item>
     <item
         android:id="@+id/miProfile"
         android:icon="@drawable/toolbar_icon_list_with_dots"
         app:showAsAction="ifRoom"
-        android:title="Profile">
+        android:title="">
     </item>
 </menu>

@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Papernote</string>
-
+    <string name="new_papernote">New Papernote</string>
     <string name="empty_notes_string">Is there anything you want to write?</string>
 </resources>

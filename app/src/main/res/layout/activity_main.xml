@@ -32,7 +32,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat_bold"
                 android:text="@string/app_name"
-                android:textSize="@dimen/_22ssp" />
+                android:textSize="@dimen/_22ssp"
+                android:textColor="@color/gray900"/>
 
 
         </android.support.v7.widget.Toolbar>
@@ -83,7 +84,7 @@
 
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/createNotes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/icon_plus_white"

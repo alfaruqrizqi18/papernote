@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:homeAsUpIndicator">@drawable/icon_back_button</item>
         <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
     </style>
 
     <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">

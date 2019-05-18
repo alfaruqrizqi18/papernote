@@ -22,7 +22,6 @@
             android:background="@null"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:paddingLeft="@dimen/_5sdp"
             android:paddingRight="@dimen/_10sdp"
             app:elevation="0dp"
             app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar">
@@ -40,5 +39,141 @@
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/root_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
+
+        <LinearLayout
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:orientation="vertical">
+            <EditText
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/title"
+                android:background="@null"
+                android:singleLine="true"
+                android:fontFamily="@font/montserrat_bold"
+                android:textSize="@dimen/_16ssp"
+                android:layout_marginBottom="@dimen/_10sdp"/>
+
+            <EditText
+                android:id="@+id/papernote_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/_170sdp"
+                android:hint="@string/papernote_content"
+                android:background="@null"
+                android:textSize="@dimen/_11ssp"
+                android:imeOptions="actionDone"
+                android:inputType="textMultiLine"/>
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/root_layout"
+        app:layout_anchorGravity="bottom|end">
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/_8sdp"
+            app:cardElevation="@dimen/_1sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_10sdp">
+            <RadioGroup
+                android:id="@+id/radioGroup1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:scaleX="1.5"
+                    android:scaleY="1.5"
+                    android:text="@null"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:buttonTint="#B0BEC5"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:scaleX="1.5"
+                    android:scaleY="1.5"
+                    android:text="@null"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:buttonTint="#F44336"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:scaleX="1.5"
+                    android:scaleY="1.5"
+                    android:text="@null"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:buttonTint="#E91E63"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:scaleX="1.5"
+                    android:scaleY="1.5"
+                    android:text="@null"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:buttonTint="#FFC107"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:scaleX="1.5"
+                    android:scaleY="1.5"
+                    android:text="@null"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:buttonTint="#4CAF50"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:scaleX="1.5"
+                    android:scaleY="1.5"
+                    android:text="@null"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:buttonTint="#2196F3"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:scaleX="1.5"
+                    android:scaleY="1.5"
+                    android:text="@null"
+                    android:buttonTint="#673AB7"/>
+            </RadioGroup>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+
 
 </android.support.design.widget.CoordinatorLayout>

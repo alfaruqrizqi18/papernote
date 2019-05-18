@@ -1,14 +1,14 @@
 package com.alpha.papernote;
 
 import android.os.Build;
+import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.alpha.papernote.gesture_helper.OnSwipeTouchListener;
@@ -16,6 +16,8 @@ import com.alpha.papernote.gesture_helper.OnSwipeTouchListener;
 public class CreateNotesActivity extends AppCompatActivity {
     Toolbar toolbar;
     CoordinatorLayout container;
+    EditText papernote_content;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,16 +28,18 @@ public class CreateNotesActivity extends AppCompatActivity {
         container = findViewById(R.id.container);
 
         toolbar = findViewById(R.id.toolbar);
+        papernote_content = findViewById(R.id.papernote_content);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+
         starterPack();
     }
 
 
-    void starterPack(){
+    void starterPack() {
         containerGesture();
     }
 
@@ -44,12 +48,15 @@ public class CreateNotesActivity extends AppCompatActivity {
             public void onSwipeTop() {
                 Toast.makeText(CreateNotesActivity.this, "top", Toast.LENGTH_SHORT).show();
             }
+
             public void onSwipeRight() {
                 finish();
             }
+
             public void onSwipeLeft() {
                 Toast.makeText(CreateNotesActivity.this, "left", Toast.LENGTH_SHORT).show();
             }
+
             public void onSwipeBottom() {
                 Toast.makeText(CreateNotesActivity.this, "bottom", Toast.LENGTH_SHORT).show();
             }

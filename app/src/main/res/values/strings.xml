@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Papernote</string>
+    <string name="app_tagline">Write all the things in from your mind</string>
     <string name="new_papernote">New</string>
     <string name="empty_notes_string">Is there anything you want to write?</string>
     <string name="title">Title</string>

@@ -69,11 +69,11 @@
                 android:id="@+id/papernote_content"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="@dimen/_170sdp"
+                android:paddingBottom="@dimen/_80sdp"
                 android:hint="@string/papernote_content"
+                android:scrollbars="vertical"
                 android:background="@null"
                 android:textSize="@dimen/_11ssp"
-                android:imeOptions="actionDone"
                 android:inputType="textMultiLine"/>
         </LinearLayout>
 
@@ -84,158 +84,182 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_anchor="@id/root_layout"
-        app:layout_anchorGravity="bottom|end">
-        <!--<android.support.v7.widget.CardView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--app:cardBackgroundColor="@color/white"-->
-            <!--app:cardCornerRadius="@dimen/_8sdp"-->
-            <!--app:cardElevation="@dimen/_1sdp"-->
-            <!--android:layout_marginTop="@dimen/_10sdp"-->
-            <!--android:layout_marginLeft="@dimen/_15sdp"-->
-            <!--android:layout_marginRight="@dimen/_15sdp"-->
-            <!--android:layout_marginBottom="@dimen/_10sdp">-->
+        app:layout_anchorGravity="bottom|end"
+        android:background="@color/white">
             <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:scrollbarStyle="insideOverlay"
+                android:scrollbars="none">
                 <RadioGroup
-                    android:id="@+id/radioGroup1"
+                    android:id="@+id/radio_group_color"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="right"
-                    android:padding="@dimen/_10sdp"
+                    android:paddingRight="@dimen/_10sdp"
+                    android:paddingLeft="@dimen/_10sdp"
+                    android:paddingTop="@dimen/_4sdp"
+                    android:paddingBottom="@dimen/_4sdp"
                     android:orientation="horizontal">
 
                     <RadioButton
+                        android:id="@+id/circle_color_white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="@null"
+                        android:checked="true"
                         android:button="@android:color/transparent"
                         android:background="@drawable/circle_color_white"
+                        android:contentDescription="@string/circle_white"
                         android:layout_marginRight="@dimen/_5sdp"/>
 
                     <RadioButton
+                        android:id="@+id/radio2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="@null"
                         android:button="@android:color/transparent"
                         android:background="@drawable/circle_color_cyan"
+                        android:contentDescription="@string/circle_cyan"
                         android:layout_marginRight="@dimen/_5sdp"/>
 
                     <RadioButton
+                        android:id="@+id/radio3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="@null"
                         android:button="@android:color/transparent"
                         android:background="@drawable/circle_color_amber"
+                        android:contentDescription="@string/circle_amber"
                         android:layout_marginRight="@dimen/_5sdp"/>
 
                     <RadioButton
+                        android:id="@+id/radio4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="@null"
                         android:button="@android:color/transparent"
                         android:background="@drawable/circle_color_blue"
+                        android:contentDescription="@string/circle_blue"
                         android:layout_marginRight="@dimen/_5sdp"/>
 
                     <RadioButton
+                        android:id="@+id/radio5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="@null"
                         android:button="@android:color/transparent"
                         android:background="@drawable/circle_color_deep_orange"
+                        android:contentDescription="@string/circle_deep_orange"
                         android:layout_marginRight="@dimen/_5sdp"/>
 
                     <RadioButton
+                        android:id="@+id/radio6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="@null"
                         android:button="@android:color/transparent"
                         android:background="@drawable/circle_color_brown"
+                        android:contentDescription="@string/circle_brown"
                         android:layout_marginRight="@dimen/_5sdp"/>
 
                     <RadioButton
+                        android:id="@+id/radio7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="@null"
                         android:button="@android:color/transparent"
                         android:background="@drawable/circle_color_green"
+                        android:contentDescription="@string/circle_green"
                         android:layout_marginRight="@dimen/_5sdp"/>
 
                     <RadioButton
+                        android:id="@+id/radio8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="@null"
                         android:button="@android:color/transparent"
                         android:background="@drawable/circle_color_indigo"
+                        android:contentDescription="@string/circle_indigo"
                         android:layout_marginRight="@dimen/_5sdp"/>
 
                     <RadioButton
+                        android:id="@+id/radio9"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="@null"
                         android:button="@android:color/transparent"
                         android:background="@drawable/circle_color_lime"
+                        android:contentDescription="@string/circle_lime"
                         android:layout_marginRight="@dimen/_5sdp"/>
 
                     <RadioButton
+                        android:id="@+id/radio10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="@null"
                         android:button="@android:color/transparent"
                         android:background="@drawable/circle_color_orange"
+                        android:contentDescription="@string/circle_orange"
                         android:layout_marginRight="@dimen/_5sdp"/>
 
                     <RadioButton
+                        android:id="@+id/radio11"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="@null"
                         android:button="@android:color/transparent"
                         android:background="@drawable/circle_color_pink"
+                        android:contentDescription="@string/circle_pink"
                         android:layout_marginRight="@dimen/_5sdp"/>
 
                     <RadioButton
+                        android:id="@+id/radio12"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="@null"
                         android:button="@android:color/transparent"
                         android:background="@drawable/circle_color_purple"
+                        android:contentDescription="@string/circle_purple"
                         android:layout_marginRight="@dimen/_5sdp"/>
 
                     <RadioButton
+                        android:id="@+id/radio13"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="@null"
                         android:button="@android:color/transparent"
                         android:background="@drawable/circle_color_red"
+                        android:contentDescription="@string/circle_red"
                         android:layout_marginRight="@dimen/_5sdp"/>
 
                     <RadioButton
+                        android:id="@+id/radio14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="@null"
                         android:button="@android:color/transparent"
                         android:background="@drawable/circle_color_yellow"
+                        android:contentDescription="@string/circle_yellow"
                         android:layout_marginRight="@dimen/_5sdp"/>
 
 
                 </RadioGroup>
             </HorizontalScrollView>
-        <!--</android.support.v7.widget.CardView>-->
     </LinearLayout>
 
 

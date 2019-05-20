@@ -18,7 +18,7 @@
                         <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
                             <item>
                                 <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="oval">
-                                    <solid android:color="#EF9A9A" />
+                                    <solid android:color="@color/circle_amber" />
                                 </shape>
                             </item>
                             <item android:width="@dimen/_15sdp" android:height="@dimen/_15sdp" android:drawable="@drawable/tick_circle_color" android:gravity="center" />
@@ -26,7 +26,7 @@
                     </item>
                     <item>
                         <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="oval">
-                            <solid android:color="#EF9A9A" />
+                            <solid android:color="@color/circle_amber" />
                             <size android:width="@dimen/_30sdp" android:height="@dimen/_30sdp" />
                         </shape>
                     </item>

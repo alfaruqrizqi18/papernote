@@ -4,4 +4,19 @@
     <string name="empty_notes_string">Is there anything you want to write?</string>
     <string name="title">Title</string>
     <string name="papernote_content">Papernotes</string>
+
+    <string name="circle_amber">#FFD54F</string>
+    <string name="circle_blue">#64B5F6</string>
+    <string name="circle_brown">#A1887F</string>
+    <string name="circle_cyan">#4DD0E1</string>
+    <string name="circle_deep_orange">#FF8A65</string>
+    <string name="circle_green">#81C784</string>
+    <string name="circle_indigo">#7986CB</string>
+    <string name="circle_lime">#DCE775</string>
+    <string name="circle_orange">#FFB74D</string>
+    <string name="circle_pink">#F06292</string>
+    <string name="circle_purple">#BA68C8</string>
+    <string name="circle_red">#e57373</string>
+    <string name="circle_yellow">#FFF176</string>
+    <string name="circle_white">#FAFAFA</string>
 </resources>

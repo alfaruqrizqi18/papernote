@@ -1,5 +1,6 @@
 package com.alpha.papernote;
 
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
@@ -9,14 +10,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
-
-import com.alpha.papernote.gesture_helper.OnSwipeTouchListener;
 
 public class CreateNotesActivity extends AppCompatActivity {
     Toolbar toolbar;
     CoordinatorLayout container;
     EditText papernote_content;
+    RadioGroup radio_group_color;
+    RadioButton radio_button;
+    String color_label;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +33,7 @@ public class CreateNotesActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolbar);
         papernote_content = findViewById(R.id.papernote_content);
+        radio_group_color = findViewById(R.id.radio_group_color);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -40,29 +45,20 @@ public class CreateNotesActivity extends AppCompatActivity {
 
 
     void starterPack() {
-        containerGesture();
+        getSelectedColor();
     }
 
-    void containerGesture() {
-        container.setOnTouchListener(new OnSwipeTouchListener(CreateNotesActivity.this) {
-            public void onSwipeTop() {
-                Toast.makeText(CreateNotesActivity.this, "top", Toast.LENGTH_SHORT).show();
-            }
-
-            public void onSwipeRight() {
-                finish();
-            }
-
-            public void onSwipeLeft() {
-                Toast.makeText(CreateNotesActivity.this, "left", Toast.LENGTH_SHORT).show();
-            }
-
-            public void onSwipeBottom() {
-                Toast.makeText(CreateNotesActivity.this, "bottom", Toast.LENGTH_SHORT).show();
+    void getSelectedColor() {
+        color_label = CreateNotesActivity.this.getResources().getString(R.string.circle_white);
+        radio_group_color.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                radio_button = findViewById(checkedId);
+                color_label = (String) radio_button.getContentDescription();
+                toolbar.setBackgroundColor(Color.parseColor(color_label));
             }
         });
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -78,7 +74,8 @@ public class CreateNotesActivity extends AppCompatActivity {
                 finish();
                 return true;
             case R.id.save:
-                Toast.makeText(CreateNotesActivity.this, "Saved", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CreateNotesActivity.this, "Saved with color " + color_label, Toast.LENGTH_SHORT).show();
+//                getSelectedColor();
                 return true;
 
             default:

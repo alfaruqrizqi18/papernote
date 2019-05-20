@@ -5,6 +5,20 @@
     <color name="colorAccent">#FFC107</color>
     <color name="rippleColor">#9E9E9E</color>
 
+    <color name="circle_amber">#FFD54F</color>
+    <color name="circle_blue">#64B5F6</color>
+    <color name="circle_brown">#A1887F</color>
+    <color name="circle_cyan">#4DD0E1</color>
+    <color name="circle_deep_orange">#FF8A65</color>
+    <color name="circle_green">#81C784</color>
+    <color name="circle_indigo">#7986CB</color>
+    <color name="circle_lime">#DCE775</color>
+    <color name="circle_orange">#FFB74D</color>
+    <color name="circle_pink">#F06292</color>
+    <color name="circle_purple">#BA68C8</color>
+    <color name="circle_red">#e57373</color>
+    <color name="circle_yellow">#FFF176</color>
+
     <color name="white">#FAFAFA</color>
     <color name="gray900">#212121</color>
 </resources>

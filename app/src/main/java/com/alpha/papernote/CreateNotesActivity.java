@@ -45,6 +45,7 @@ public class CreateNotesActivity extends AppCompatActivity {
 
 
     void starterPack() {
+        papernote_content.requestFocus();
         getSelectedColor();
     }
 
@@ -55,7 +56,6 @@ public class CreateNotesActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 radio_button = findViewById(checkedId);
                 color_label = (String) radio_button.getContentDescription();
-                toolbar.setBackgroundColor(Color.parseColor(color_label));
             }
         });
     }

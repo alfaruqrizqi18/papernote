@@ -4,6 +4,8 @@
     <string name="empty_notes_string">Is there anything you want to write?</string>
     <string name="title">Title</string>
     <string name="papernote_content">Papernotes</string>
+    <string name="searching_for_something">Searching for something?</string>
+    <string name="yes_i_want_to_search">Yes, I want to search...</string>
 
     <string name="circle_amber">#FFD54F</string>
     <string name="circle_blue">#64B5F6</string>

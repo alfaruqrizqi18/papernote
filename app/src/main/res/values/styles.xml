@@ -9,6 +9,11 @@
         <item name="android:homeAsUpIndicator">@drawable/icon_back_button</item>
         <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
         <item name="android:fontFamily">@font/montserrat_regular</item>
+
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
     </style>
 
     <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">

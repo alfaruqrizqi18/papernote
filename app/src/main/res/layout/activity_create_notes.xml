@@ -75,7 +75,7 @@
                 android:background="@null"
                 android:textSize="@dimen/_11ssp"
                 android:focusable="true"
-                android:inputType="textCapSentences|textMultiLine"/>
+                android:inputType="textMultiLine|textCapSentences"/>
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>

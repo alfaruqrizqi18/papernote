@@ -45,6 +45,15 @@ public class RealmHelper {
         return results;
     }
 
+    public List<NotesModel> SearchNotes(String query){
+        RealmResults<NotesModel> results = realm.where(NotesModel.class)
+                .contains("title", query)
+                .or()
+                .contains("content", query)
+                .findAll();
+        return results;
+    }
+
     // untuk meng-update data
     public void Update(final Integer id, final String title, final String papernoteContent, final String color_label){
         realm.executeTransactionAsync(new Realm.Transaction() {

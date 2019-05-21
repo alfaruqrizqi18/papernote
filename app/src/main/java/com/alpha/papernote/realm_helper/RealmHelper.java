@@ -8,6 +8,7 @@ import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
+import io.realm.Sort;
 
 public class RealmHelper {
 
@@ -40,7 +41,7 @@ public class RealmHelper {
     }
 
     public List<NotesModel> GetAllNotes(){
-        RealmResults<NotesModel> results = realm.where(NotesModel.class).findAll();
+        RealmResults<NotesModel> results = realm.where(NotesModel.class).findAll().sort("id", Sort.DESCENDING);
         return results;
     }
 

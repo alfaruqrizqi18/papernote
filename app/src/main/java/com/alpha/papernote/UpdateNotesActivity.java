@@ -1,8 +1,7 @@
 package com.alpha.papernote;
 
-import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,7 +17,7 @@ import com.alpha.papernote.realm_helper.RealmHelper;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
-public class CreateNotesActivity extends AppCompatActivity {
+public class UpdateNotesActivity extends AppCompatActivity {
     Toolbar toolbar;
     TextView toolbarTitle;
     EditText title, papernote_content;
@@ -29,15 +28,22 @@ public class CreateNotesActivity extends AppCompatActivity {
 
     Realm realm;
     RealmHelper realmHelper;
-    NotesModel notesModel;
+
+    String iId, iTitle, iPapernote, iColor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_notes);
 
-        toolbar = findViewById(R.id.toolbar);
+        iId = getIntent().getExtras().getString("id");
+        iTitle = getIntent().getExtras().getString("title");
+        iPapernote = getIntent().getExtras().getString("papernote_content");
+        iColor = getIntent().getExtras().getString("color_label");
+        color_label = iColor;
+
         toolbarTitle = findViewById(R.id.toolbarTitle);
+        toolbar = findViewById(R.id.toolbar);
         title = findViewById(R.id.title);
         papernote_content = findViewById(R.id.papernote_content);
         radio_group_color = findViewById(R.id.radio_group_color);
@@ -47,43 +53,18 @@ public class CreateNotesActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         //Set up Realm
-        Realm.init(CreateNotesActivity.this);
+        // Set up
+        Realm.init(this);
         RealmConfiguration configuration = new RealmConfiguration.Builder().build();
         realm = Realm.getInstance(configuration);
-
+        realmHelper = new RealmHelper(realm);
 
         starterPack();
     }
 
-
     void starterPack() {
         papernote_content.requestFocus();
-        toolbarTitle.setText(CreateNotesActivity.this.getResources().getString(R.string.new_papernote));
-        getSelectedColor();
-    }
-
-    void saveNotes() {
-        String mTitle = title.getText().toString();
-        String mPapernoteContent = papernote_content.getText().toString();
-
-        if (mTitle.isEmpty() && mPapernoteContent.isEmpty()) {
-            Toast.makeText(CreateNotesActivity.this, "Please fill title or papernote content", Toast.LENGTH_SHORT).show();
-        } else {
-            notesModel = new NotesModel();
-            notesModel.setTitle(mTitle);
-            notesModel.setContent(mPapernoteContent);
-            notesModel.setColor(color_label.trim());
-
-            realmHelper = new RealmHelper(realm);
-            realmHelper.Save(notesModel);
-
-            finish();
-        }
-    }
-
-
-    void getSelectedColor() {
-        color_label = CreateNotesActivity.this.getResources().getString(R.string.circle_white);
+        toolbarTitle.setText(UpdateNotesActivity.this.getResources().getString(R.string.edit_papernote));
         radio_group_color.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -91,6 +72,27 @@ public class CreateNotesActivity extends AppCompatActivity {
                 color_label = (String) radio_button.getContentDescription();
             }
         });
+        setValueToForm();
+    }
+
+    void setValueToForm(){
+        title.setText(iTitle);
+        papernote_content.setText(iPapernote);
+        int lengthRadioGroup = radio_group_color.getChildCount();
+        for (int i = 0; i < lengthRadioGroup; i++) {
+            String content = (String) radio_group_color.getChildAt(i).getContentDescription();
+            if (content.equals(color_label)) {
+                radio_button = findViewById(radio_group_color.getChildAt(i).getId());
+                radio_button.setChecked(true);
+            }
+        }
+    }
+
+    void updateNotes(){
+        String mTitle = title.getText().toString();
+        String mPapernoteContent = papernote_content.getText().toString();
+        realmHelper.Update(Integer.parseInt(iId), mTitle, mPapernoteContent, color_label);
+        finish();
     }
 
     @Override
@@ -102,11 +104,6 @@ public class CreateNotesActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (title.getText().toString().isEmpty() && papernote_content.getText().toString().isEmpty()) {
-            Toast.makeText(CreateNotesActivity.this, "Empty papernote discarded", Toast.LENGTH_SHORT).show();
-        } else {
-            saveNotes();
-        }
         super.onBackPressed();
     }
 
@@ -114,15 +111,10 @@ public class CreateNotesActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                if (title.getText().toString().isEmpty() && papernote_content.getText().toString().isEmpty()) {
-                    Toast.makeText(CreateNotesActivity.this, "Empty papernote discarded", Toast.LENGTH_SHORT).show();
-                    finish();
-                } else {
-                    saveNotes();
-                }
+                finish();
                 return true;
             case R.id.save:
-                saveNotes();
+                updateNotes();
                 return true;
 
             default:

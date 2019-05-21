@@ -22,8 +22,7 @@
             android:background="@null"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:paddingRight="@dimen/_10sdp"
-            android:paddingTop="@dimen/_10sdp"
+            android:padding="@dimen/_10sdp"
             app:elevation="0dp"
             app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar">
 
@@ -90,7 +89,7 @@
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
+                android:layout_gravity="top"
                 android:paddingLeft="@dimen/_10sdp"
                 android:paddingRight="@dimen/_10sdp"
                 android:paddingTop="@dimen/_10sdp"

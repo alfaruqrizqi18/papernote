@@ -1,6 +1,7 @@
 package com.alpha.papernote.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alpha.papernote.R;
+import com.alpha.papernote.UpdateNotesActivity;
 import com.alpha.papernote.models.NotesModel;
 
 import java.util.List;
@@ -47,8 +49,8 @@ public class MainActivityNotesAdapter extends RecyclerView.Adapter<MainActivityN
             viewHolder.papernote_content.setVisibility(View.GONE);
         } else {
             viewHolder.papernote_content.setVisibility(View.VISIBLE);
-            if (notes.getContent().length() > 50) {
-                viewHolder.papernote_content.setText(notes.getContent().toString().substring(0, 50));
+            if (notes.getContent().length() > 100) {
+                viewHolder.papernote_content.setText(notes.getContent().toString().substring(0, 100));
             } else {
                 viewHolder.papernote_content.setText(notes.getContent());
             }
@@ -57,9 +59,22 @@ public class MainActivityNotesAdapter extends RecyclerView.Adapter<MainActivityN
         viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Title : " + notes.getTitle(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, UpdateNotesActivity.class);
+                intent.putExtra("id", notes.getId().toString());
+                intent.putExtra("title", notes.getTitle());
+                intent.putExtra("papernote_content", notes.getContent());
+                intent.putExtra("color_label", notes.getColor());
+                context.startActivity(intent);
             }
         });
+    }
+
+    public void removeItem(int position) {
+//        notesModels.
+        // notify the item removed by position
+        // to perform recycler view delete animations
+        // NOTE: don't call notifyDataSetChanged()
+        notifyItemRemoved(position);
     }
 
     @Override

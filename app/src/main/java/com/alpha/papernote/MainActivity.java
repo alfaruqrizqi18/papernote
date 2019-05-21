@@ -2,6 +2,7 @@ package com.alpha.papernote;
 
 import android.content.Intent;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -12,6 +13,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -66,8 +68,8 @@ public class MainActivity extends AppCompatActivity {
         // Setup Realm
         RealmConfiguration configuration = new RealmConfiguration.Builder().build();
         realm = Realm.getInstance(configuration);
-
         realmHelper = new RealmHelper(realm);
+
         notesModel = new ArrayList<>();
         notesModel = realmHelper.GetAllNotes();
 
@@ -78,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         containerGesture();
         createNotesClicked();
         setToolbarTitleBasedOnTime();
+        recyclerLongPress();
     }
 
     void setToolbarTitleBasedOnTime(){
@@ -95,11 +98,30 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    void recyclerLongPress(){
+        ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder viewHolder1) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+                Toast.makeText(MainActivity.this, ""+ notesModel.get(viewHolder.getAdapterPosition()).getId(), Toast.LENGTH_SHORT).show();
+                realmHelper.Delete(notesModel.get(viewHolder.getAdapterPosition()).getId());
+                mainActivityNotesAdapter.notifyDataSetChanged();
+                total_notes.setText(mainActivityNotesAdapter.getItemCount() + " notes ");
+            }
+        };
+        new ItemTouchHelper(simpleCallback).attachToRecyclerView(recyclerView);
+    }
+
+
     @Override
     protected void onResume() {
         super.onResume();
-//        mainActivityNotesAdapter.notifyDataSetChanged();
         showAllNotes();
+        mainActivityNotesAdapter.notifyDataSetChanged();
         checkIfEmptyStates();
     }
 

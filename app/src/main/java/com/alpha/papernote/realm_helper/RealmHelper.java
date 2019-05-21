@@ -45,6 +45,31 @@ public class RealmHelper {
         return results;
     }
 
+    // untuk meng-update data
+    public void Update(final Integer id, final String title, final String papernoteContent, final String color_label){
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                NotesModel model = realm.where(NotesModel.class)
+                        .equalTo("id", id)
+                        .findFirst();
+                model.setTitle(title);
+                model.setContent(papernoteContent);
+                model.setColor(color_label);
+            }
+        }, new Realm.Transaction.OnSuccess() {
+            @Override
+            public void onSuccess() {
+                Log.e("pppp", "onSuccess: Update Successfully");
+            }
+        }, new Realm.Transaction.OnError() {
+            @Override
+            public void onError(Throwable error) {
+                error.printStackTrace();
+            }
+        });
+    }
+
     public void Delete(Integer id){
         final RealmResults<NotesModel> model = realm.where(NotesModel.class).equalTo("id", id).findAll();
         realm.executeTransaction(new Realm.Transaction() {

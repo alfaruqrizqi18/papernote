@@ -1,14 +1,12 @@
 package com.alpha.papernote;
 
 import android.content.Intent;
-import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -22,7 +20,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alpha.papernote.adapter.MainActivityNotesAdapter;
-import com.alpha.papernote.gesture_helper.OnSwipeTouchListener;
 import com.alpha.papernote.models.NotesModel;
 import com.alpha.papernote.realm_helper.RealmHelper;
 
@@ -34,6 +31,7 @@ import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
 public class MainActivity extends AppCompatActivity {
+    public boolean isEmptyStates = true;
     Realm realm;
     RealmHelper realmHelper;
     TextView toolbarTitle, total_notes;
@@ -44,13 +42,11 @@ public class MainActivity extends AppCompatActivity {
     NestedScrollView root_layout;
     RecyclerView recyclerView;
     LinearLayout empty_layout, text_layout;
-    public boolean isEmptyStates = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        root_layout = findViewById(R.id.root_layout);
 
         recyclerView = findViewById(R.id.recyclerView);
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL);
@@ -76,29 +72,28 @@ public class MainActivity extends AppCompatActivity {
         starterPack();
     }
 
-    void starterPack(){
-        containerGesture();
+    void starterPack() {
         createNotesClicked();
         setToolbarTitleBasedOnTime();
         recyclerLongPress();
     }
 
-    void setToolbarTitleBasedOnTime(){
+    void setToolbarTitleBasedOnTime() {
         Calendar c = Calendar.getInstance();
         int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
 
-        if(timeOfDay >= 0 && timeOfDay < 12){
+        if (timeOfDay >= 0 && timeOfDay < 12) {
             toolbarTitle.setText("Hi, Good Morning!");
-        }else if(timeOfDay >= 12 && timeOfDay < 16){
+        } else if (timeOfDay >= 12 && timeOfDay < 16) {
             toolbarTitle.setText("Hi, Good Afternoon!");
-        }else if(timeOfDay >= 16 && timeOfDay < 21){
+        } else if (timeOfDay >= 16 && timeOfDay < 21) {
             toolbarTitle.setText("Hi, Good Evening!");
-        }else if(timeOfDay >= 21 && timeOfDay < 24){
+        } else if (timeOfDay >= 21 && timeOfDay < 24) {
             toolbarTitle.setText("Hi, Good Night!");
         }
     }
 
-    void recyclerLongPress(){
+    void recyclerLongPress() {
         ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder viewHolder1) {
@@ -107,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
-                Toast.makeText(MainActivity.this, ""+ notesModel.get(viewHolder.getAdapterPosition()).getId(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "" + notesModel.get(viewHolder.getAdapterPosition()).getId(), Toast.LENGTH_SHORT).show();
                 realmHelper.Delete(notesModel.get(viewHolder.getAdapterPosition()).getId());
                 mainActivityNotesAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
                 total_notes.setText(mainActivityNotesAdapter.getItemCount() + " notes ");
@@ -123,32 +118,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         showAllNotes();
-//        mainActivityNotesAdapter.notifyDataSetChanged();
         checkIfEmptyStates();
     }
 
-    void checkStatusEmptyState(){
-        if (mainActivityNotesAdapter.getItemCount() == 0) {
-            isEmptyStates = true;
-        } else {
-            isEmptyStates = false;
-        }
+    void checkStatusEmptyState() {
+        isEmptyStates = mainActivityNotesAdapter.getItemCount() == 0;
     }
 
-    public void showAllNotes(){
+    public void showAllNotes() {
         mainActivityNotesAdapter = new MainActivityNotesAdapter(MainActivity.this, notesModel);
         checkStatusEmptyState();
         total_notes.setText(mainActivityNotesAdapter.getItemCount() + " notes ");
         recyclerView.setAdapter(mainActivityNotesAdapter);
     }
 
-    void containerGesture() {
-        root_layout.setOnTouchListener(new OnSwipeTouchListener(MainActivity.this) {
-            public void onSwipeLeft() {
-                startActivity(new Intent(MainActivity.this, CreateNotesActivity.class));
-            }
-        });
-    }
 
     void checkIfEmptyStates() {
         AppBarLayout.LayoutParams params = (AppBarLayout.LayoutParams) toolbar.getLayoutParams();
@@ -167,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    void createNotesClicked(){
+    void createNotesClicked() {
         createNotes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

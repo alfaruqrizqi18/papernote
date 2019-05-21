@@ -12,7 +12,6 @@ public class Splashscreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.acitivity_splashscreen);
         new Handler().postDelayed(new Runnable() {
 
             /*
@@ -26,8 +25,6 @@ public class Splashscreen extends AppCompatActivity {
                 // Start your app main activity
                 Intent i = new Intent(Splashscreen.this, MainActivity.class);
                 startActivity(i);
-
-                // close this activity
                 finish();
             }
         }, 1500);

@@ -109,8 +109,10 @@ public class MainActivity extends AppCompatActivity {
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
                 Toast.makeText(MainActivity.this, ""+ notesModel.get(viewHolder.getAdapterPosition()).getId(), Toast.LENGTH_SHORT).show();
                 realmHelper.Delete(notesModel.get(viewHolder.getAdapterPosition()).getId());
-                mainActivityNotesAdapter.notifyDataSetChanged();
+                mainActivityNotesAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
                 total_notes.setText(mainActivityNotesAdapter.getItemCount() + " notes ");
+                checkStatusEmptyState();
+                checkIfEmptyStates();
             }
         };
         new ItemTouchHelper(simpleCallback).attachToRecyclerView(recyclerView);
@@ -121,17 +123,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         showAllNotes();
-        mainActivityNotesAdapter.notifyDataSetChanged();
+//        mainActivityNotesAdapter.notifyDataSetChanged();
         checkIfEmptyStates();
     }
 
-    public void showAllNotes(){
-        mainActivityNotesAdapter = new MainActivityNotesAdapter(MainActivity.this, notesModel);
+    void checkStatusEmptyState(){
         if (mainActivityNotesAdapter.getItemCount() == 0) {
             isEmptyStates = true;
         } else {
             isEmptyStates = false;
         }
+    }
+
+    public void showAllNotes(){
+        mainActivityNotesAdapter = new MainActivityNotesAdapter(MainActivity.this, notesModel);
+        checkStatusEmptyState();
         total_notes.setText(mainActivityNotesAdapter.getItemCount() + " notes ");
         recyclerView.setAdapter(mainActivityNotesAdapter);
     }

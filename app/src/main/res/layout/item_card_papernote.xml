@@ -8,8 +8,8 @@
     android:layout_margin="@dimen/_8sdp"
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
-    app:cardCornerRadius="@dimen/_8sdp"
-    app:cardElevation="@dimen/_10sdp">
+    app:cardCornerRadius="@dimen/_15sdp"
+    app:cardElevation="@dimen/_8sdp">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -32,6 +34,7 @@ import io.realm.RealmConfiguration;
 
 public class MainActivity extends AppCompatActivity {
     public boolean isEmptyStates = true;
+    CoordinatorLayout container;
     Realm realm;
     RealmHelper realmHelper;
     TextView toolbarTitle, total_notes;
@@ -52,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
 
+        container = findViewById(R.id.container);
         toolbar = findViewById(R.id.toolbar);
         toolbarTitle = findViewById(R.id.toolbarTitle);
         total_notes = findViewById(R.id.total_notes);
@@ -75,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
     void starterPack() {
         createNotesClicked();
         setToolbarTitleBasedOnTime();
-        recyclerLongPress();
+        recyclerSwipeLeft();
     }
 
     void setToolbarTitleBasedOnTime() {
@@ -93,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    void recyclerLongPress() {
+    void recyclerSwipeLeft() {
         ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder viewHolder1) {

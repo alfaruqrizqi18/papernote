@@ -63,7 +63,6 @@ public class UpdateNotesActivity extends AppCompatActivity {
     }
 
     void starterPack() {
-        papernote_content.requestFocus();
         toolbarTitle.setText(UpdateNotesActivity.this.getResources().getString(R.string.edit_papernote));
         radio_group_color.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override

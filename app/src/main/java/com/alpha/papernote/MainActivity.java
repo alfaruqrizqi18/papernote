@@ -119,15 +119,6 @@ public class MainActivity extends AppCompatActivity {
             public void onSwipeLeft() {
                 startActivity(new Intent(MainActivity.this, CreateNotesActivity.class));
             }
-            public void onSwipeTop() {
-                Toast.makeText(MainActivity.this, "top", Toast.LENGTH_SHORT).show();
-            }
-            public void onSwipeRight() {
-                Toast.makeText(MainActivity.this, "right", Toast.LENGTH_SHORT).show();
-            }
-            public void onSwipeBottom() {
-                Toast.makeText(MainActivity.this, "bottom", Toast.LENGTH_SHORT).show();
-            }
         });
     }
 

@@ -2,8 +2,8 @@ package com.alpha.papernote;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -17,6 +17,7 @@ import android.widget.Toast;
 public class SearchActivity extends AppCompatActivity {
     EditText search_form;
     Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,11 +34,11 @@ public class SearchActivity extends AppCompatActivity {
         starterPack();
     }
 
-    void starterPack(){
+    void starterPack() {
         setActionSearchToSearchForm();
     }
 
-    void setActionSearchToSearchForm(){
+    void setActionSearchToSearchForm() {
         search_form.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -59,7 +60,7 @@ public class SearchActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         search_form.requestFocus();
-        InputMethodManager imm = (InputMethodManager)   getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
         search_form.selectAll();
         super.onResume();
@@ -82,7 +83,7 @@ public class SearchActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
-                InputMethodManager imm = (InputMethodManager)getSystemService(
+                InputMethodManager imm = (InputMethodManager) getSystemService(
                         Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(search_form.getWindowToken(), 0);
                 return true;

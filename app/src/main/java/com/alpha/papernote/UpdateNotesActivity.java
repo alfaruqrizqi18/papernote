@@ -1,7 +1,7 @@
 package com.alpha.papernote;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -9,9 +9,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.alpha.papernote.models.NotesModel;
 import com.alpha.papernote.realm_helper.RealmHelper;
 
 import io.realm.Realm;
@@ -74,7 +72,7 @@ public class UpdateNotesActivity extends AppCompatActivity {
         setValueToForm();
     }
 
-    void setValueToForm(){
+    void setValueToForm() {
         title.setText(iTitle);
         papernote_content.setText(iPapernote);
         int lengthRadioGroup = radio_group_color.getChildCount();
@@ -87,7 +85,7 @@ public class UpdateNotesActivity extends AppCompatActivity {
         }
     }
 
-    void updateNotes(){
+    void updateNotes() {
         String mTitle = title.getText().toString();
         String mPapernoteContent = papernote_content.getText().toString();
         realmHelper.Update(Integer.parseInt(iId), mTitle, mPapernoteContent, color_label);

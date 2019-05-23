@@ -89,14 +89,6 @@ public class MainActivityNotesAdapter extends RecyclerView.Adapter<MainActivityN
         });
     }
 
-    public void removeItem(int position) {
-//        notesModels.
-        // notify the item removed by position
-        // to perform recycler view delete animations
-        // NOTE: don't call notifyDataSetChanged()
-        notifyItemRemoved(position);
-    }
-
     @Override
     public int getItemCount() {
         return notesModels.size();

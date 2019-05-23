@@ -6,6 +6,7 @@ import com.alpha.papernote.models.NotesModel;
 
 import java.util.List;
 
+import io.realm.Case;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import io.realm.Sort;
@@ -47,9 +48,9 @@ public class RealmHelper {
 
     public List<NotesModel> SearchNotes(String query){
         RealmResults<NotesModel> results = realm.where(NotesModel.class)
-                .contains("title", query)
+                .contains("title", query, Case.INSENSITIVE)
                 .or()
-                .contains("content", query)
+                .contains("content", query, Case.INSENSITIVE)
                 .findAll();
         return results;
     }

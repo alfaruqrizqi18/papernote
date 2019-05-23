@@ -4,9 +4,11 @@
     <string name="new_papernote">New</string>
     <string name="edit_papernote">Edit</string>
     <string name="empty_notes_string">Is there anything you want to write?</string>
+    <string name="search_notes_not_found_string">Sorry, we can\'t find. Please try with different keywords</string>
     <string name="title">Title</string>
     <string name="papernote_content">Papernotes</string>
     <string name="searching_for_something">Searching for something?</string>
+    <string name="searching_result">Searching results</string>
     <string name="yes_i_want_to_search">Yes, I want to search...</string>
 
     <string name="circle_amber">#FFD54F</string>

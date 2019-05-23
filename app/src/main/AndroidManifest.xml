@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UpdateNotesActivity"></activity>
+        <activity android:name=".SearchResultsActivity"></activity>
+        <activity android:name=".UpdateNotesActivity" />
         <activity
             android:name=".Splashscreen"
             android:theme="@style/Splashtheme">
@@ -21,10 +22,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SearchActivity"
-            android:windowSoftInputMode="stateVisible" />
+            android:name=".SearchActivity"/>
         <activity android:name=".CreateNotesActivity" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

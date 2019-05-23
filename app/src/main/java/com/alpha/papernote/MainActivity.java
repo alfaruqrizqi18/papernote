@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -42,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
     MainActivityNotesAdapter mainActivityNotesAdapter;
     Toolbar toolbar;
     FloatingActionButton createNotes;
-    NestedScrollView root_layout;
     RecyclerView recyclerView;
     LinearLayout empty_layout, text_layout;
 
@@ -106,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
-                Toast.makeText(MainActivity.this, "" + notesModel.get(viewHolder.getAdapterPosition()).getId(), Toast.LENGTH_SHORT).show();
                 realmHelper.Delete(notesModel.get(viewHolder.getAdapterPosition()).getId());
                 mainActivityNotesAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
                 total_notes.setText(mainActivityNotesAdapter.getItemCount() + " notes ");
